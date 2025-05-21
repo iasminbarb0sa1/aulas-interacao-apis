@@ -22,7 +22,7 @@ cepInput.addEventListener("blur", () => {
             .then(data => {
                 if (!data.erro) {
                     document.querySelector("#logradouro").value = data.logradouro
-                      
+
                     document.querySelector("#complemento").value = data.complemento
 
                     document.querySelector("#bairro").value = data.bairro
@@ -31,11 +31,15 @@ cepInput.addEventListener("blur", () => {
 
                     document.querySelector("#estado").value = data.uf
 
-                } else{
+                } else {
                     console.log("Cep não encontrado")
                 }
             })
-    }else{
-                    alert("CEP inválido")
-                }
+            .catch(error =>{
+                alert("Erro ao buscar o CEP")
+                console.error(error)
+            })
+    } else {
+        alert("CEP inválido")
+    }
 })
